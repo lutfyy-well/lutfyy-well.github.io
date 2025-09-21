@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kalkulator - Website Saya</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #888 0%, #fff 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Navbar Styles */
+    .navbar {
+      background: linear-gradient(90deg, #444 0%, #888 100%);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      color: white;
+      font-size: 1.8rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo i {
+      margin-right: 10px;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
+
+    .nav-links li {
+      margin-left: 2rem;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-links a:hover, .nav-links a.active {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .hamburger {
+      display: none;
+      cursor: pointer;
+      color: white;
+      font-size: 1.5rem;
+    }
+
+    /* Container Styles */
+    .container {
+      flex: 1;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* Card Styles */
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      padding: 2rem;
+      text-align: center;
+      max-width: 600px;
+      margin: 2rem auto;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card-img {
+      font-size: 4rem;
+      color: #999;
+      margin-bottom: 1.5rem;
+    }
+
+    .card-content h3 {
+      color: #555;
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+    }
+
+    .card-content p {
+      color: #777;
+      line-height: 1.6;
+    }
+
+    /* Calculator Styles */
+    .calculator-container {
+      background: #111827;
+      padding: 30px;
+      width: 350px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+      margin: 2rem auto;
+    }
+
+    .calc-text {
+      margin-bottom: 20px;
+      padding: 10px;
+      background-color: #1f2937;
+      border-radius: 10px;
+    }
+
+    .calc-text p {
+      width: 100%;
+      font-size: 3rem;
+      text-align: end;
+      color: #d1d5db;
+      word-wrap: break-word;
+      word-break: break-all;
+      min-height: 64px;
+    }
+
+    .calc-keys {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .calc-keys button {
+      font-size: 1.5rem;
+      border: none;
+      border-radius: 16px;
+      cursor: pointer;
+      height: 65px;
+      width: 65px;
+      transition: 0.2s;
+    }
+
+    .calc-keys button:hover {
+      transform: scale(1.05);
+      filter: brightness(1.1);
+    }
+
+    .key-zero {
+      grid-column: span 2;
+      width: 100%;
+      border-radius: 14px;
+    }
+
+    .key-operate {
+      background: #14b8a6;
+      color: #fff;
+    }
+
+    .key-others {
+      background: #374151;
+      color: #e5e7eb;
+    }
+
+    .numbers {
+      background: #1f2937;
+      color: #f3f4f6;
+    }
+
+    .calc-keys button:active {
+      transform: scale(0.98);
+    }
+
+    /* Footer Styles */
+    .footer {
+      background: linear-gradient(90deg, #666 0%, #888 100%);
+      color: white;
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer ul {
+      list-style: none;
+    }
+
+    .social-icons a {
+      color: white;
+      margin-left: 1rem;
+      font-size: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      color: #666;
+      transform: translateY(-3px);
+    }
+
+    /* Responsive Styles */
+    @media screen and (max-width: 768px) {
+      .navbar {
+        padding: 1rem;
+      }
+      
+      .nav-links {
+        position: fixed;
+        height: 100vh;
+        width: 100%;
+        flex-direction: column;
+        clip-path: circle(0px at 90% -10%);
+        -webkit-clip-path: circle(0px at 90% -10%);
+        background: linear-gradient(135deg, #666 0%, #fff 100%);
+        transition: all 0.8s ease-out;
+        pointer-events: none;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+      }
+      
+      .nav-links.open {
+        clip-path: circle(1500px at 90% -10%);
+        -webkit-clip-path: circle(1500px at 90% -10%);
+        pointer-events: all;
+      }
+      
+      .nav-links li {
+        margin: 0;
+      }
+      
+      .nav-links a {
+        font-size: 1.5rem;
+        padding: 1rem 2rem;
+      }
+      
+      .hamburger {
+        display: block;
+        z-index: 1001;
+      }
+      
+      .card {
+        margin: 1rem auto;
+        padding: 1.5rem;
+      }
+      
+      .calculator-container {
+        width: 300px;
+        padding: 20px;
+      }
+      
+      .calc-keys button {
+        height: 60px;
+        width: 60px;
+      }
+      
+      .footer {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+      
+      .social-icons {
+        margin-top: 0.5rem;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      .calculator-container {
+        width: 280px;
+        padding: 15px;
+      }
+      
+      .calc-keys button {
+        height: 55px;
+        width: 55px;
+        font-size: 1.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">
+      <i class="fas fa-user"></i>
+      <span>Lutfyy</span>
+    </div>
+    
+    <ul class="nav-links">
+      <li><a href="index.html"><i class="fas fa-home"></i> HOME</a></li>
+      <li><a href="tentang.html"><i class="fas fa-user"></i> TENTANG</a></li>
+      <li><a href="kalkulator.html" class="active"><i class="fas fa-calculator"></i> KALKULATOR</a></li>
+      <li><a href="kenangan.html"><i class="fas fa-images"></i> KENANGAN</a></li>
+    </ul>
+    
+    <div class="hamburger">
+      <i class="fas fa-bars"></i>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="card">
+      <div class="card-img">
+        <i class="fas fa-calculator"></i>
+      </div>
+      <div class="card-content">
+        <h3>Kalkulator</h3>
+        <p>Kalkulator sederhana untuk membantu perhitungan sehari-hari.</p>
+      </div>
+    </div>
+    
+    <div class="calculator-container">
+      <div class="calc-text">
+        <p id="user-input">0</p>
+      </div>
+      <div class="calc-keys">
+        <button class="key-others operations">AC</button>
+        <button class="key-others operations">DEL</button>
+        <button class="key-others operations">%</button>
+        <button class="key-operate operations">/</button>
+        <button class="numbers">7</button>
+        <button class="numbers">8</button>
+        <button class="numbers">9</button>
+        <button class="key-operate operations">*</button>
+        <button class="numbers">4</button>
+        <button class="numbers">5</button>
+        <button class="numbers">6</button>
+        <button class="key-operate operations">-</button>
+        <button class="numbers">1</button>
+        <button class="numbers">2</button>
+        <button class="numbers">3</button>
+        <button class="key-operate operations">+</button>
+        <button class="key-zero numbers">0</button>
+        <button class="numbers">.</button>
+        <button class="key-operate operations">=</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <ul>
+      <li>@ Lutfyy</li>
+    </ul>
+    <div class="social-icons">
+      <a href="https://www.instagram.com/lutxzyfza" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.tiktok.com/@buitenlanders22" target="_blank"><i class="fab fa-tiktok"></i></a>
+    </div>
+  </div>
+
+  <script>
+    // Toggle mobile menu
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+      hamburger.innerHTML = navLinks.classList.contains('open') 
+        ? '<i class="fas fa-times"></i>' 
+        : '<i class="fas fa-bars"></i>';
+    });
+    
+    // Close menu when clicking on a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+      });
+    });
+
+    // Calculator functionality
+    const inputValue = document.getElementById("user-input");
+    const number = document.querySelectorAll(".numbers");
+    const calculate = document.querySelectorAll(".operations");
+    
+    number.forEach(function (item) {
+      item.addEventListener("click", function (e) {
+        if (inputValue.innerText === "NaN") {
+          inputValue.innerText = "";
+        }
+        if (inputValue.innerText === "0") {
+          inputValue.innerText = "";
+        }
+        inputValue.innerText += e.target.innerHTML.trim();
+      });
+    });
+    
+    calculate.forEach(function (item) {
+      item.addEventListener("click", function (e) {
+        let lastValue = inputValue.innerText.substring(inputValue.innerText.length, inputValue.innerText.length - 1);
+    
+        if (!isNaN(lastValue) && e.target.innerHTML === "=") {
+          inputValue.innerText = eval(inputValue.innerText);
+        } else if (e.target.innerHTML === "AC") {
+          inputValue.innerText = 0;
+        } else if (e.target.innerHTML === "DEL") {
+          inputValue.innerText = inputValue.innerText.substring(0, inputValue.innerText.length - 1);
+          if (inputValue.innerText.length == 0) {
+            inputValue.innerText = 0;
+          }
+        } else {
+          if (!isNaN(lastValue)) {
+            inputValue.innerText += e.target.innerHTML;
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>
