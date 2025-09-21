@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Album Kenangan - Website Saya</title>
+  <title>Album Kenangan - Website Lutfyy</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     * {
@@ -14,35 +14,39 @@
     }
 
     body {
-      background: linear-gradient(135deg, #fff 0%, #999 100%);
+      background: linear-gradient(135deg, #0a192f 0%, #172a45 50%, #0a192f 100%);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      color: #e6f1ff;
     }
 
     /* Navbar Styles */
     .navbar {
-      background: linear-gradient(90deg, #666 0%, #999 100%);
+      background: linear-gradient(90deg, #0a192f 0%, #112240 100%);
       padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 20px rgba(2, 12, 27, 0.7);
       position: sticky;
       top: 0;
       z-index: 1000;
+      border-bottom: 1px solid rgba(100, 255, 218, 0.1);
     }
 
     .logo {
-      color: white;
+      color: #64ffda;
       font-size: 1.8rem;
       font-weight: bold;
       display: flex;
       align-items: center;
+      text-shadow: 0 0 10px rgba(100, 255, 218, 0.5);
     }
 
     .logo i {
       margin-right: 10px;
+      color: #64ffda;
     }
 
     .nav-links {
@@ -55,23 +59,44 @@
     }
 
     .nav-links a {
-      color: white;
+      color: #ccd6f6;
       text-decoration: none;
       font-weight: 500;
       padding: 0.5rem 1rem;
       border-radius: 4px;
       transition: all 0.3s ease;
+      position: relative;
     }
 
     .nav-links a:hover, .nav-links a.active {
-      background-color: rgba(255, 255, 255, 0.2);
+      color: #64ffda;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: #64ffda;
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after, .nav-links a.active::after {
+      width: 100%;
     }
 
     .hamburger {
       display: none;
       cursor: pointer;
-      color: white;
+      color: #ccd6f6;
       font-size: 1.5rem;
+      transition: color 0.3s ease;
+    }
+
+    .hamburger:hover {
+      color: #64ffda;
     }
 
     /* Container Styles */
@@ -90,14 +115,14 @@
     }
 
     .page-header h1 {
-      color: #444;
-      font-size: 1.5rem;
+      color: #ccd6f6;
+      font-size: 1.2rem;
       margin-bottom: 0.5rem;
     }
 
     .subtitle {
-      color: #555;
-      font-size: 0.8rem;
+      color: #8892b0;
+      font-size: 0.5rem;
       margin-bottom: 1rem;
     }
 
@@ -111,17 +136,20 @@
     }
 
     .audio-player button {
-      background: linear-gradient(90deg, #666 0%, #999 100%);
-      color: white;
+      background: linear-gradient(145deg, #64ffda, #4fc1b8);
+      color: #0a192f;
       border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 4px;
+      padding: 0.7rem 1.5rem;
+      border-radius: 30px;
       cursor: pointer;
       transition: all 0.3s ease;
+      font-weight: 600;
+      box-shadow: 0 5px 15px rgba(2, 12, 27, 0.5);
     }
 
     .audio-player button:hover {
-      background: linear-gradient(90deg, #555 0%, #777 100%);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(100, 255, 218, 0.4);
     }
 
     /* Gallery Styles */
@@ -136,16 +164,17 @@
       position: relative;
       border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 5px 15px rgba(2, 12, 27, 0.5);
       cursor: pointer;
       height: 250px;
-      background: linear-gradient(135deg, #666 0%, #999 100%);
+      background: linear-gradient(145deg, #112240, #0a192f);
       display: flex;
       justify-content: center;
       align-items: center;
-      color: white;
+      color: #64ffda;
       font-size: 3rem;
       transition: all 0.3s ease;
+      border: 1px solid rgba(100, 255, 218, 0.1);
     }
 
     .gallery-item img {
@@ -156,8 +185,8 @@
     }
 
     .gallery-item:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+      transform: translateY(-7px);
+      box-shadow: 0 15px 30px rgba(2, 12, 27, 0.7);
     }
 
     .gallery-item:hover img {
@@ -173,7 +202,7 @@
       top: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0, 0, 0, 0.9);
+      background-color: rgba(10, 25, 47, 0.95);
       justify-content: center;
       align-items: center;
     }
@@ -181,6 +210,8 @@
     .modal-content {
       max-width: 90%;
       max-height: 90%;
+      border-radius: 8px;
+      box-shadow: 0 0 30px rgba(100, 255, 218, 0.3);
     }
 
     .modal-content img {
@@ -193,19 +224,26 @@
       position: absolute;
       top: 20px;
       right: 30px;
-      color: white;
+      color: #64ffda;
       font-size: 40px;
       cursor: pointer;
+      text-shadow: 0 0 10px rgba(2, 12, 27, 0.7);
+      transition: all 0.3s ease;
+    }
+
+    .close-modal:hover {
+      color: #ccd6f6;
     }
 
     /* Footer Styles */
     .footer {
-      background: linear-gradient(90deg, #666 0%, #999 100%);
-      color: white;
+      background: linear-gradient(90deg, #0a192f 0%, #112240 100%);
+      color: #8892b0;
       padding: 1.5rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      border-top: 1px solid rgba(100, 255, 218, 0.1);
     }
 
     .footer ul {
@@ -213,15 +251,16 @@
     }
 
     .social-icons a {
-      color: white;
+      color: #ccd6f6;
       margin-left: 1rem;
       font-size: 1.5rem;
       transition: all 0.3s ease;
     }
 
     .social-icons a:hover {
-      color: #f5f7fa;
+      color: #64ffda;
       transform: translateY(-3px);
+      text-shadow: 0 0 10px rgba(100, 255, 218, 0.5);
     }
 
     /* Responsive Styles */
@@ -237,7 +276,7 @@
         flex-direction: column;
         clip-path: circle(0px at 90% -10%);
         -webkit-clip-path: circle(0px at 90% -10%);
-        background: linear-gradient(135deg, #666 0%, #999 100%);
+        background: linear-gradient(135deg, #112240 0%, #0a192f 100%);
         transition: all 0.8s ease-out;
         pointer-events: none;
         top: 0;
@@ -294,13 +333,12 @@
   <!-- Navbar -->
   <nav class="navbar">
     <div class="logo">
-      <i class="fas fa-user"></i>
+      <i class="fas fa-user-astronaut"></i>
       <span>Lutfyy</span>
     </div>
     <ul class="nav-links">
       <li><a href="index.html"><i class="fas fa-home"></i> HOME</a></li>
       <li><a href="tentang.html"><i class="fas fa-user"></i> TENTANG</a></li>
-      <li><a href="kalkulator.html"><i class="fas fa-calculator"></i> KALKULATOR</a></li>
       <li><a href="kenangan.html" class="active"><i class="fas fa-images"></i> KENANGAN</a></li>
     </ul>
     
@@ -361,7 +399,7 @@
   <!-- Footer -->
   <div class="footer">
     <ul>
-      <li>@ Lutfyy</li>
+      <li>© 2025 Lutfyy..</li>
     </ul>
     <div class="social-icons">
       <a href="https://www.instagram.com/lutxzyfza" target="_blank"><i class="fab fa-instagram"></i></a>
@@ -425,4 +463,4 @@
     });
   </script>
 </body>
-</html>
+  </html>
