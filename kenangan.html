@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Album Kenangan - Website Lutfyy</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0a192f 0%, #172a45 50%, #0a192f 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      color: #e6f1ff;
+    }
+
+    /* Navbar Minimalis */
+    .navbar {
+      background: rgba(10, 25, 47, 0.95);
+      padding: 0.8rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(100, 255, 218, 0.15);
+      box-shadow: 0 2px 10px rgba(2, 12, 27, 0.5);
+    }
+
+    .logo {
+      color: #64ffda;
+      font-size: 1.5rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo i {
+      margin-right: 8px;
+      color: #64ffda;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
+
+    .nav-links li {
+      margin-left: 1.5rem;
+    }
+
+    .nav-links a {
+      color: #ccd6f6;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.4rem 0.6rem;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a:hover, .nav-links a.active {
+      color: #64ffda;
+      background: rgba(100, 255, 218, 0.08);
+    }
+
+    /* Hamburger Menu Sederhana */
+    .hamburger {
+      display: none;
+      cursor: pointer;
+      background: transparent;
+      border: none;
+      outline: none;
+      width: 24px;
+      height: 18px;
+      position: relative;
+    }
+
+    .hamburger span {
+      display: block;
+      position: absolute;
+      height: 2px;
+      width: 100%;
+      background: #ccd6f6;
+      border-radius: 2px;
+      opacity: 1;
+      left: 0;
+      transition: all 0.2s ease;
+    }
+
+    .hamburger span:nth-child(1) { top: 0; }
+    .hamburger span:nth-child(2) { top: 8px; }
+    .hamburger span:nth-child(3) { top: 16px; }
+
+    .hamburger.open span:nth-child(1) {
+      top: 8px;
+      transform: rotate(45deg);
+    }
+
+    .hamburger.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.open span:nth-child(3) {
+      top: 8px;
+      transform: rotate(-45deg);
+    }
+
+    /* Container */
+    .container {
+      flex: 1;
+      padding: 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* Header Styles */
+    .page-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .page-header h1 {
+      color: #ccd6f6;
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .subtitle {
+      color: #8892b0;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    /* Audio Player Styles */
+    .audio-player {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 1rem 0 1.5rem;
+      gap: 1rem;
+    }
+
+    .audio-player button {
+      background: rgba(100, 255, 218, 0.1);
+      color: #64ffda;
+      border: 1px solid rgba(100, 255, 218, 0.3);
+      padding: 0.6rem 1.2rem;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .audio-player button:hover {
+      background: rgba(100, 255, 218, 0.2);
+      transform: translateY(-2px);
+    }
+
+    /* Gallery Styles */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.2rem;
+      margin-top: 1.5rem;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(2, 12, 27, 0.3);
+      cursor: pointer;
+      height: 200px;
+      background: rgba(17, 34, 64, 0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #64ffda;
+      font-size: 2.5rem;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(100, 255, 218, 0.1);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 15px rgba(2, 12, 27, 0.4);
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(10, 25, 47, 0.95);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 6px;
+      box-shadow: 0 0 20px rgba(100, 255, 218, 0.3);
+      border: 1px solid rgba(100, 255, 218, 0.2);
+    }
+
+    .modal-content img {
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 15px;
+      right: 25px;
+      color: #64ffda;
+      font-size: 35px;
+      cursor: pointer;
+      background: rgba(10, 25, 47, 0.7);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.2s ease;
+    }
+
+    .close-modal:hover {
+      color: #ccd6f6;
+      transform: rotate(90deg);
+    }
+
+    /* Footer Minimalis */
+    .footer {
+      background: rgba(10, 25, 47, 0.9);
+      color: #8892b0;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(100, 255, 218, 0.1);
+    }
+
+    .footer ul {
+      list-style: none;
+    }
+
+    .social-icons a {
+      color: #ccd6f6;
+      margin-left: 1rem;
+      font-size: 1.3rem;
+      transition: all 0.2s ease;
+    }
+
+    .social-icons a:hover {
+      color: #64ffda;
+    }
+
+    /* Responsive Styles */
+    @media screen and (max-width: 768px) {
+      .navbar {
+        padding: 0.8rem 1rem;
+      }
+      
+      .nav-links {
+        position: fixed;
+        height: 100vh;
+        width: 100%;
+        flex-direction: column;
+        background: rgba(17, 34, 64, 0.98);
+        transition: all 0.3s ease;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        opacity: 0;
+        visibility: hidden;
+      }
+      
+      .nav-links.open {
+        opacity: 1;
+        visibility: visible;
+      }
+      
+      .nav-links li {
+        margin: 0;
+      }
+      
+      .nav-links a {
+        font-size: 1.3rem;
+        padding: 0.8rem 1.5rem;
+      }
+      
+      .hamburger {
+        display: block;
+      }
+      
+      .gallery {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 1rem;
+      }
+      
+      .gallery-item {
+        height: 150px;
+        font-size: 2rem;
+      }
+      
+      .page-header h1 {
+        font-size: 1.5rem;
+      }
+      
+      .footer {
+        flex-direction: column;
+        gap: 0.8rem;
+        text-align: center;
+        padding: 1rem;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      .logo {
+        font-size: 1.3rem;
+      }
+      
+      .page-header h1 {
+        font-size: 1.3rem;
+      }
+      
+      .subtitle {
+        font-size: 0.9rem;
+      }
+      
+      .audio-player {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      
+      .gallery {
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      }
+      
+      .gallery-item {
+        height: 130px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">
+      <i class="fas fa-user-astronaut"></i>
+      <span>𝐋𝐮𝐭𝐟𝐲𝐲</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html"><i class="fas fa-home"></i> HOME</a></li>
+      <li><a href="tentang.html"><i class="fas fa-user"></i> TENTANG</a></li>
+      <li><a href="kenangan.html" class="active"><i class="fas fa-images"></i> KENANGAN</a></li>
+    </ul>
+    
+    <button class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container">
+    <header class="page-header">
+      <h1>MY KENANGAN INDAH</h1>
+      <div class="subtitle">Kumpulan my kenangan indah jir (when ya sama dia)</div>
+      
+      <!-- Audio Player -->
+      <div class="audio-player">
+        <button id="playMusic"><i class="fas fa-play"></i> Putar Musik</button>
+        <button id="pauseMusic"><i class="fas fa-pause"></i> Jeda</button>
+        <audio id="backgroundMusic" loop>
+          <source src="partyanthem.mp3" type="audio/mpeg">
+          Browser Anda tidak mendukung elemen audio.
+        </audio>
+      </div>
+    </header>
+
+    <div class="gallery">
+      <div class="gallery-item">
+        <img src="botak.jpg" alt="Kenangan Botak" onclick="openModal(this)">
+      </div>
+      <div class="gallery-item">
+        <img src="osis.jpg" alt="Masa OSIS" onclick="openModal(this)">
+      </div>
+      <div class="gallery-item">
+        <img src="osis2.jpg" alt="Masa OSIS 2" onclick="openModal(this)">
+      </div>
+      <div class="gallery-item">
+        <img src="paskib1.jpg" alt="Paskibra 1" onclick="openModal(this)">
+      </div>
+      <div class="gallery-item">
+        <img src="paskib2.jpg" alt="Paskibra 2" onclick="openModal(this)">
+      </div>
+      <div class="gallery-item">
+        <img src="paskib3.jpg" alt="Paskibra 3" onclick="openModal(this)">
+      </div>
+      <div class="gallery-item">
+        <img src="paskib4.jpg" alt="Paskibra 4" onclick="openModal(this)">
+      </div>
+      <!-- Gambar kelas yang ditambahkan -->
+      <div class="gallery-item">
+        <img src="kelas.jpg" alt="Kenangan Kelas" onclick="openModal(this)">
+      </div>
+    </div>
+  </div>
+  <!-- Modal for Image View -->
+  <div id="imageModal" class="modal">
+    <span class="close-modal" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modalImage">
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <ul>
+      <li>© 2025 Lutfyy.</li>
+    </ul>
+    <div class="social-icons">
+      <a href="https://www.instagram.com/lutxzyfza" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.tiktok.com/@buitenlanders22" target="_blank"><i class="fab fa-tiktok"></i></a>
+    </div>
+  </div>
+
+  <script>
+    // Toggle mobile menu
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      navLinks.classList.toggle('open');
+    });
+    
+    // Close menu when clicking on a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        navLinks.classList.remove('open');
+      });
+    });
+    
+    // Audio control
+    const audio = document.getElementById('backgroundMusic');
+    const playButton = document.getElementById('playMusic');
+    const pauseButton = document.getElementById('pauseMusic');
+    
+    playButton.addEventListener('click', () => {
+      audio.play();
+      playButton.innerHTML = '<i class="fas fa-volume-up"></i> Musik Diputar';
+    });
+    
+    pauseButton.addEventListener('click', () => {
+      audio.pause();
+      playButton.innerHTML = '<i class="fas fa-play"></i> Putar Musik';
+    });
+    
+    // Modal functionality for images
+    function openModal(element) {
+      const modal = document.getElementById('imageModal');
+      const modalImg = document.getElementById('modalImage');
+      modal.style.display = 'flex';
+      modalImg.src = element.src;
+    }
+    
+    function closeModal() {
+      document.getElementById('imageModal').style.display = 'none';
+    }
+    
+    // Close modal when clicking outside the image
+    window.addEventListener('click', function(event) {
+      const modal = document.getElementById('imageModal');
+      if (event.target === modal) {
+        closeModal();
+      }
+    });
+  </script>
+</body>
+</html>
