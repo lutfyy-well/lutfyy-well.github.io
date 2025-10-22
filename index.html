@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Pribadi</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Tombol Scroll ke Atas -->
+    <button id="scroll-top" class="scroll-top" aria-label="Scroll to top">
+        ↑
+    </button>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+               <h1>About Me</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#profile" class="nav-link">Profil</a></li>
+                <li><a href="#hobby" class="nav-link">Hobby</a></li>
+                <li><a href="#memory" class="nav-link">Kenangan</a></li>
+                <li><a href="#contact" class="nav-link">Kontak</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <div class="hero-text fade-in">
+                    <h2>Halo, Saya <span class="highlight">Lutfi Chaerul Mifzal</span></h2>
+                    <p>Selamat datang di website pribadi saya</p>
+                       
+                    <!-- Music Player dipindah ke atas tombol -->
+                    <div class="music-player-hero">
+                        <audio id="background-music" loop>
+                            <source src="ABBA.mp3" type="audio/mpeg">
+                            Browser Anda tidak mendukung elemen audio.
+                        </audio>
+                        <div class="music-controls">
+                            <button id="music-toggle" class="music-btn" aria-label="Toggle music">
+                                <span class="play-icon">▶</span>
+                                <span class="pause-icon">❚❚</span>
+                            </button>
+                            <div class="music-title-container">
+                                <span class="music-title">ABBA - The Winner Takes Its All</span>
+                            </div>
+                            <div class="volume-control">
+                                <button id="volume-down" class="volume-btn" aria-label="Decrease volume">−</button>
+                                <input type="range" id="volume-slider" min="0" max="100" value="100" aria-label="Volume control">
+                                <button id="volume-up" class="volume-btn" aria-label="Increase volume">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="cta-button">Jelajahi Lebih Lanjut</button>
+                </div>
+               
+                <div class="hero-image fade-in">
+                    <div class="avatar">
+                        <img src="pe.jpg" alt="Foto Profil" class="profile-photo" oncontextmenu="return false" ondragstart="return false">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Profile Section -->
+        <section id="profile" class="section">
+            <div class="container">
+                <h2 class="section-title slide-in">Profil Saya</h2>
+                <div class="profile-content">
+                    <div class="profile-image slide-in">
+                        <div class="profile-avatar">
+                            <img src="ganteng.jpg" alt="Foto Profil" class="profile-photo" oncontextmenu="return false" ondragstart="return false">
+                        </div>
+                    </div>
+                    <div class="profile-info slide-in">
+                        <h2>Tentang Saya</h2>
+                        <p>Saya adalah seorang pelajar yang bersemangat dalam bidang teknologi dan pemrograman web. Dengan duduk di kelas 11, saya telah belajar berbagai materi yang menarik.</p>
+                        
+                        <!-- Favorite Languages Section -->
+                        <div class="favorite-languages">
+                            <h4>Bahasa Favorit</h4>
+                            <div class="languages-grid">
+                                <div class="language-item">
+                                    <div class="language-icon">
+                                        <img src="html.jpg" alt="HTML" oncontextmenu="return false" ondragstart="return false">
+                                    </div>
+                                    <span>HTML</span>
+                                </div>
+                                <div class="language-item">
+                                    <div class="language-icon">
+                                        <img src="css.jpg" alt="CSS" oncontextmenu="return false" ondragstart="return false">
+                                    </div>
+                                    <span>CSS</span>
+                                </div>
+                                <div class="language-item">
+                                    <div class="language-icon">
+                                        <img src="java.jpg" alt="JavaScript" oncontextmenu="return false" ondragstart="return false">
+                                    </div>
+                                    <span>JavaScript</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hobby Section -->
+        <section id="hobby" class="section bg-alt">
+            <div class="container">
+                <h2 class="section-title slide-in">Hobby & Minat</h2>
+                <div class="hobby-grid">
+                    <div class="hobby-card fade-in">
+                        <div class="hobby-icon">&#128218;</div>
+                        <h3>Membaca</h3>
+                        <p>suka membaca buku-buku fiksi dan non-fiksi untuk memperluas wawasan</p>
+                    </div>
+                    <div class="hobby-card fade-in">
+                        <div class="hobby-icon">&#127925;</div>
+                        <h3>Musik</h3>
+                        <p>Suka mendengarkan musik apa saja yang penting enak.</p>
+                       </div>
+                    <div class="hobby-card fade-in">
+                        <div class="hobby-icon">&#127869;</div>
+                        <h3>Makan</h3>
+                        <p>Suka makan apalagi sama mie ayam dan nasgor goreng.</p>
+                    </div>
+                    <div class="hobby-card fade-in">
+                        <div class="hobby-icon">&#127939;</div>
+                        <h3>Olahraga</h3>
+                        <p>Berolahraga lah agar kita selalu sehat dan tidak gampang sakit.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Memory Section -->
+        <section id="memory" class="section">
+            <div class="container">
+                <h2 class="section-title slide-in">Kenangan</h2>
+                <div class="memory-grid">
+                    <div class="memory-card fade-in">
+                        <div class="memory-image memory-1" onclick="openImage('lulus.jpg')">
+                            <img src="lulus.jpg" alt="Wisuda" oncontextmenu="return false" ondragstart="return false">
+                            <div class="image-overlay">
+                                <span class="image-placeholder">Kelulusan</span>
+                            </div>
+                        </div>
+                        <div class="memory-content">
+                            <h3>Kelulusan</h3>
+                            <p>Momen kelulusan yang penuh kebahagiaan dan harapan di masa depan.</p>
+                            <span class="memory-date">2024</span>
+                        </div>
+                    </div>
+                    <div class="memory-card fade-in">
+                        <div class="memory-image memory-2" onclick="openImage('Cita-Cita.jpg')">
+                            <img src="Cita-Cita.jpg" alt="Cita Cita" oncontextmenu="return false" ondragstart="return false">
+                            <div class="image-overlay">
+                                <span class="image-placeholder">Cita Cita</span>
+                            </div>
+                        </div>
+                        <div class="memory-content">
+                            <h3>Cita Cita</h3>
+                            <p>Cita Cita saya menjadi ahli programmer dan bisa membahagiakan kedua orang tua</p>
+                            <span class="memory-date">2025</span>
+                        </div>
+                    </div>
+                    <div class="memory-card fade-in">
+                        <div class="memory-image memory-3" onclick="openImage('kenangan.jpg')">
+                            <img src="kenangan.jpg" alt="Traveling" oncontextmenu="return false" ondragstart="return false">
+                            <div class="image-overlay">
+                                <span class="image-placeholder">Kenangan</span>
+                            </div>
+                        </div>
+                        <div class="memory-content">
+                            <h3>Kenangan</h3>
+                            <p>Kenangan Bersama yang menjadi momen yang tidak bisa di ulang.</p>
+                            <span class="memory-date">2025</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section bg-alt">
+            <div class="container">
+                <h2 class="section-title slide-in">Hubungi Saya</h2>
+                <div class="contact-content">
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <span class="contact-icon">📧</span>
+                            <span>lutfimifzal03@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📍</span>
+                            <span>Cirebon, Indonesia</span>
+                        </div>
+                    </div>
+                    <form class="contact-form fade-in" id="formKontak" action="https://formspree.io/f/xblzwndd" method="POST">
+                        <input type="text" placeholder="Nama Anda" required>
+                        <input type="email" placeholder="Email Anda" required>
+                        <textarea placeholder="Pesan Anda" rows="5" required></textarea>
+                        <button type="submit" class="submit-btn">Kirim Pesan</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal untuk gambar -->
+    <div id="imageModal" class="modal">
+        <span class="close-btn" onclick="closeImage()">&times;</span>
+        <img class="modal-content" id="modalImage" oncontextmenu="return false" ondragstart="return false">
+        <div id="caption"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025</p>
+            <div class="social-links">
+                <a href="https://www.instagram.com/lutxzyfza" aria-label="Instagram">Instagram</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
