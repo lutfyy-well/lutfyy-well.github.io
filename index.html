@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Pribadi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-dots">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="loading-progress">
+            <div id="loading-progress-bar" class="loading-progress-bar"></div>
+        </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <ul class="mobile-menu-list">
+            <li><a href="#home" class="mobile-menu-link">Home</a></li>
+            <li><a href="#profile" class="mobile-menu-link">Profil</a></li>
+            <li><a href="#hobby" class="mobile-menu-link">Hobby</a></li>
+            <li><a href="#memory" class="mobile-menu-link">Kenangan</a></li>
+            <li><a href="#contact" class="mobile-menu-link">Kontak</a></li>
+            <!-- Tombol toggle mode di mobile menu -->
+            <li>
+                <button class="mobile-theme-toggle" id="mobile-theme-toggle" aria-label="Toggle theme">
+                    <span>🌙</span> Mode Gelap
+                </button>
+            </li>
+        </ul>
+    </div>
+    <div class="menu-overlay" id="menu-overlay"></div>
+
+    <!-- Tombol Scroll ke Atas -->
+    <button id="scroll-top" class="scroll-top" aria-label="Scroll to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#profile" class="nav-link">Profil</a></li>
+                <li><a href="#hobby" class="nav-link">Hobby</a></li>
+                <li><a href="#memory" class="nav-link">Kenangan</a></li>
+                <li><a href="#contact" class="nav-link">Kontak</a></li>
+                <!-- Tombol toggle mode di navbar -->
+                <li>
+                    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                        🌙
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text fade-in">
+                        <h2>Halo, Saya <span class="highlight">Lutfyy</span></h2>
+                        <p>Selamat datang di website pribadi saya.</p>
+                        
+                        <!-- Music Player di Hero Section -->
+                        <div class="music-player-hero">
+                            <div class="music-controls">
+                                <button id="play-btn" class="music-btn" aria-label="Play music">
+                                    <span class="play-icon">▶</span>
+                                    <span class="pause-icon">❚❚</span>
+                                </button>
+                                <div class="music-title-container">
+                                    <div class="music-title">ABBA - The Winner Takes it All</div>
+                                </div>
+                                <div class="volume-control">
+                                    <button id="volume-btn" class="volume-btn" aria-label="Mute volume"></button>
+                                    <input type="range" id="volume-slider" min="0" max="1" step="0.1" value="0.9" aria-label="Volume control">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button class="cta-button" id="cta-button">Jelajahi Lebih Lanjut</button>
+                    </div>
+                    <div class="hero-image fade-in">
+                        <div class="avatar">
+                            <img src="pe.jpg" alt="Foto Profil" class="profile-photo clickable-image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Profile Section -->
+        <section id="profile" class="section">
+            <div class="container">
+                <h2 class="section-title">Profil Saya</h2>
+                <div class="profile-content">
+                    <div class="profile-image slide-in">
+                        <div class="profile-avatar">
+                            <img src="ganteng.jpg" alt="Foto Profil" class="profile-photo clickable-image">
+                        </div>
+                    </div>
+                    <div class="profile-text slide-in">
+                        <h3>Tentang Saya</h3>
+                        <p>Saya adalah seorang pelajar yang bersemangat dalam bidang teknologi dan pemrograman web. Dengan duduk di kelas 11, saya telah belajar berbagai materi yang menarik.</p>
+                        
+                        <div class="favorite-languages">
+                            <h4>Bahasa Pemrograman Favorit</h4>
+                            <div class="languages-grid">
+                                <div class="language-item">
+                                    <div class="language-icon">
+                                        <i class="fab fa-html5"></i>
+                                    </div>
+                                    <span>HTML</span>
+                                </div>
+                                <div class="language-item">
+                                    <div class="language-icon">
+                                        <i class="fab fa-css3"></i>
+                                    </div>
+                                    <span>CSS</span>
+                                </div>
+                                <div class="language-item">
+                                    <div class="language-icon">
+                                        <i class="fab fa-js"></i>
+                                    </div>
+                                    <span>JavaScript</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hobby Section -->
+        <section id="hobby" class="section bg-alt">
+            <div class="container">
+                <h2 class="section-title">Hobby Saya</h2>
+                <div class="hobby-grid">
+                    <div class="hobby-card fade-in">
+                        <div class="hobby-icon"><i class="fas fa-music"></i></div>
+                        <h3>Mendengar Musik</h3>
+                        <p>Suka mendengarkan musik apa saja yang penting enak.</p>
+                    </div>
+                    <div class="hobby-card fade-in">
+                        <div class="hobby-icon"><i class="fas fa-palette"></i></div>
+                        <h3>Melukis</h3>
+                        <p>Membuat lukisan yang menarik dan bagus sehingga memanjakan mata yang melihat lukisannya.</p>
+                    </div>
+                    <div class="hobby-card fade-in">
+                        <div class="hobby-icon"><i class="fas fa-gamepad"></i></div>
+                        <h3>Main Game</h3>
+                        <p>Saya sangat suka bermain game, namun bermain berlebihan itu tidak baik, jadi kita harus belajar juga jangan game terus.</p>
+                    </div>
+                    <div class="hobby-card fade-in">
+                        <div class="hobby-icon"><i class="fas fa-camera"></i></div>
+                        <h3>Fotografi</h3>
+                        <p>Mengabadikan momen melalui lensa camera adalah hobi yang sangat saya nikmati.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Memory Section -->
+        <section id="memory" class="section">
+            <div class="container">
+                <h2 class="section-title">Kenangan</h2>
+                <div class="memory-grid">
+                    <div class="memory-card fade-in">
+                        <div class="memory-image">
+                            <img src="latgab.jpg" alt="Latgab" class="clickable-image">
+                            <div class="image-overlay">
+                                <div class="image-placeholder">Latihan Gabungan</div>
+                            </div>
+                        </div>
+                        <div class="memory-content">
+                            <h3>Latgab</h3>
+                            <p>Latihan gabungan dengan teman-teman satuan lain untuk mempererat tali persaudaraan.</p>
+                            <div class="memory-date">15 Maret 2023</div>
+                        </div>
+                    </div>
+                    <div class="memory-card fade-in">
+                        <div class="memory-image">
+                            <img src="mpds.jpg" alt="MPDS" class="clickable-image">
+                            <div class="image-overlay">
+                                <div class="image-placeholder">Masa Pengenalan Disiplin Siswa</div>
+                            </div>
+                        </div>
+                        <div class="memory-content">
+                            <h3>MPDS</h3>
+                            <p>Kegiatan Masa Pengenalan Disiplin Siswa yang penuh keceriaan dan kebahagiaan.</p>
+                            <div class="memory-date">20 Juli 2023</div>
+                        </div>
+                    </div>
+                    <div class="memory-card fade-in">
+                        <div class="memory-image">
+                            <img src="seleksi.jpg" alt="Seleksi" class="clickable-image">
+                            <div class="image-overlay">
+                                <div class="image-placeholder">Seleksi Paskibra Kecamatan</div>
+                            </div>
+                        </div>
+                        <div class="memory-content">
+                            <h3>Seleksi PasKec</h3>
+                            <p>Tetap semangat walaupun ujungnya tidak lolos setidaknya kita sudah berani berjuang.</p>
+                            <div class="memory-date">5 Oktober 2023</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section bg-alt">
+            <div class="container">
+                <h2 class="section-title">Hubungi Saya</h2>
+                <div class="contact-content">
+                    <div class="contact-info slide-in">
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                                <span>lutfimifzal03@gmail.com</span>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon"><i class="fas fa-map-marker"></i></div>
+                                <span>Cirebon, Indonesia</span>
+                            </d>
+                        </div>
+                        
+                    
+                    <!-- Form Kontak dengan Formspree -->
+                    <div class="contact-form slide-in">
+                        <form id="contact-form" action="https://formspree.io/f/xblzwndd" method="POST">
+                            <div class="form-group">
+                                <label for="name">Nama Lengkap</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="subject">Subjek</label>
+                                <input type="text" id="subject" name="subject" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Pesan</label>
+                                <textarea id="message" name="message" rows="5" required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="cta-button form-submit">Kirim Pesan</button>
+                            
+                            <div id="form-status" class="form-status"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal untuk gambar -->
+    <div id="image-modal" class="modal">
+        <span class="close-btn" id="close-modal">&times;</span>
+        <img class="modal-content" id="modal-image">
+        <div id="caption"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Lutfyy.</p>
+            <div class="social-links-footer">
+                <a href="https://www.instagram.com/lutxzyfza" aria-label="Instagram">Instagram</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Audio Element untuk lagu ABBA -->
+    <audio id="background-music" loop>
+        <source src="ABBA.mp3" type="audio/mpeg">
+        Browser Anda tidak mendukung elemen audio.
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
